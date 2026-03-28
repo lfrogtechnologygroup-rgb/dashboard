@@ -7,21 +7,21 @@ import LivePreviewCard from '@/components/LivePreviewCard';
 
 export default function DashboardPage() {
   return (
-    <div className="flex-col" style={{ padding: '2.5rem', width: '100%', maxWidth: '1400px', margin: '0 auto', minHeight: '100vh' }}>
+    <div className="dashboard-container">
       
       <Header />
 
       {/* Main Grid */}
-      <div className="flex gap-8 w-full" style={{ alignItems: 'flex-start' }}>
+      <div className="main-grid">
         
         {/* Left Column Controls */}
-        <div className="flex-col gap-6" style={{ width: '420px', flexShrink: 0 }}>
+        <div className="left-sidebar">
           <GenerateImagesCard />
           <GenerateVideosCard />
         </div>
 
         {/* Right Column Previews */}
-        <div className="flex-1 w-full" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', alignContent: 'start' }}>
+        <div className="right-previews">
           <LivePreviewCard 
             title="Image1" 
             baseUrl="https://skouatixaenecztkzdtw.supabase.co/storage/v1/object/public/testing/short.png" 

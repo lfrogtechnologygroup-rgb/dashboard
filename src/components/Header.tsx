@@ -54,12 +54,12 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="flex items-center justify-between w-full" style={{ marginBottom: '2.5rem' }}>
+    <header className="header-container">
       <div>
         <h1 className="gradient-text" style={{ fontSize: '1.875rem', fontWeight: 700, margin: 0, letterSpacing: '-0.025em' }}>Creator Studio</h1>
         <p style={{ fontSize: '0.875rem', fontWeight: 500, color: '#E5E7EB', margin: 0 }}>Manage your content generation pipeline</p>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="header-actions">
         <div className="badge-status">
           <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#3B82F6' }}></span>
           Status: {dbStatus}
@@ -79,7 +79,7 @@ export default function Header() {
         </button>
 
         {/* Profile & Logout in the top right */}
-        <div className="flex items-center gap-3" style={{ marginLeft: '0.5rem', borderLeft: '1px solid #2A2A36', paddingLeft: '1.5rem' }}>
+        <div className="flex items-center gap-3" style={{ marginLeft: 'auto', borderLeft: '1px solid #2A2A36', paddingLeft: '1.5rem' }}>
           <div className="avatar-circle">N</div>
           <a href="/" className="flex items-center gap-2" style={{ fontSize: '0.875rem', fontWeight: 500, color: '#9CA3AF', transition: 'color 0.2s', textDecoration: 'none' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = '#9CA3AF'}>
              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
