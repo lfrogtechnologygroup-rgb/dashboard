@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
 
 interface LivePreviewCardProps {
@@ -12,6 +12,13 @@ interface LivePreviewCardProps {
 export default function LivePreviewCard({ title = "Live Preview", baseUrl, driveLinkId }: LivePreviewCardProps) {
   const [timestamp, setTimestamp] = useState(Date.now());
   const [driveLink, setDriveLink] = useState('');
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  }, [baseUrl]);
 
   useEffect(() => {
     // Fetch custom drive link from Supabase
@@ -60,10 +67,12 @@ export default function LivePreviewCard({ title = "Live Preview", baseUrl, drive
         {isVideo ? (
           <video 
             src={previewUrl} 
+            ref={videoRef}
             controls
+            onLoadedMetadata={(e) => e.currentTarget.pause()}
             style={{ maxWidth: '100%', maxHeight: '400px', width: '100%', objectFit: 'contain' }} 
-            autoPlay 
-            loop 
+            autoPlay={false}
+            preload="none"
             muted 
             playsInline
           >
